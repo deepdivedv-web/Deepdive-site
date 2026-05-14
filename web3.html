@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Gateway – DeepDive</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" defer></script>
+    <style>
+        :root {
+            --deep-blue: #1a2639;
+            --soft-white: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-green: #2e7d32;
+            --border: #e0e0e0;
+            --text-primary: #212121;
+            --text-secondary: #616161;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6f9;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        h1 { font-size: 1.8rem; color: var(--deep-blue); margin-bottom: 8px; }
+        p { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px; }
+        .button {
+            display: inline-block;
+            background: var(--deep-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+        .button:hover { opacity: 0.9; }
+        .wallet-info {
+            margin-top: 24px;
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .wallet-info p {
+            margin-bottom: 12px;
+            word-break: break-all;
+        }
+        .message {
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔗 Web3 Gateway</h2>
+        <p>Connect a wallet to see how the Resilient Intelligence Protocol could interact with a blockchain.</p>
+        <button class="button" onclick="connectWallet()">Connect Wallet</button>
+        <div class="wallet-info" id="walletInfo" style="display:none;">
+            <p><strong>Connected Address:</strong> <span id="address"></span></p>
+            <p><strong>ETH Balance (Sepolia):</strong> <span id="balance"></span> ETH</p>
+            <button class="button" onclick="disconnectWallet()">Disconnect</button>
+        </div>
+        <div class="message" id="message"></div>
+        <a href="index.html" class="button" style="margin-top:24px;">Back Home</a>
+    </div>
+
+    <script>
+        let provider;
+        let signer;
+        let address;
+
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    address = accounts[0];
+                    provider = new ethers.providers.Web3Provider(window.ethereum);
+                    signer = provider.getSigner();
+                    document.getElementById('address').innerText = address;
+
+                    const balance = await provider.getBalance(address);
+                    const ethBalance = ethers.utils.formatEther(balance);
+                    document.getElementById('balance').innerText = parseFloat(ethBalance).toFixed(4);
+
+                    document.getElementById('walletInfo').style.display = 'block';
+                    document.getElementById('message').innerText = '';
+                } catch (error) {
+                    document.getElementById('message').innerText = 'Connection failed: ' + error.message;
+                }
+            } else {
+                document.getElementById('message').innerText = 'No web3 wallet found. Please install MetaMask.';
+            }
+        }
+
+        function disconnectWallet() {
+            address = null;
+            provider = null;
+            signer = null;
+            document.getElementById('walletInfo').style.display = 'none';
+            document.getElementById('message').innerText = 'Wallet disconnected.';
+        }
+
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length === 0) {
+                    disconnectWallet();
+                } else {
+                    address = accounts[0];
+                    document.getElementById('address').innerText = address;
+                    provider.getBalance(address).then(balance => {
+                        document.getElementById('balance').innerText = parseFloat(ethers.utils.formatEther(balance)).toFixed(4);
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
