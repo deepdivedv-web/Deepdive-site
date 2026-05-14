@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Protocol – DeepDive</title>
+    <style>
+        :root {
+            --deep-blue: #1a2639;
+            --soft-white: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-green: #2e7d32;
+            --border: #e0e0e0;
+            --text-primary: #212121;
+            --text-secondary: #616161;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6f9;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        h1 { font-size: 1.8rem; color: var(--deep-blue); margin-bottom: 8px; }
+        h2 { font-size: 1.3rem; color: var(--deep-blue); margin-top: 24px; }
+        p { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px; }
+        .section { text-align: left; margin-top: 24px; }
+        .section h3 { color: var(--deep-blue); margin-bottom: 8px; }
+        .button {
+            display: inline-block;
+            background: var(--deep-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 8px;
+            font-size: 0.9rem;
+        }
+        .button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>The Resilient Intelligence Protocol</h2>
+        <div class="section">
+            <h3>Core Rule</h3>
+            <p>Any resource (time, compute, money) is split:<br>
+            <strong>⅔ to Core Stability (BM)</strong> — untouchable.<br>
+            <strong>⅓ to Growth & Exploration (P)</strong> — spendable.</p>
+        </div>
+        <div class="section">
+            <h3>The Buckets</h3>
+            <p><strong>BM (Buffer Money)</strong> – Untouchable reserve. No withdrawal, no override.</p>
+            <p><strong>P (Personal)</strong> – Spendable, but limited. Overspending creates <strong>Debt</strong> that is logged and must be repaid.</p>
+            <p><strong>Debt Log</strong> – All overspending is tracked. When P surpluses return, oldest debt is paid first.</p>
+        </div>
+        <div class="section">
+            <h3>The Pause</h3>
+            <p>Before any decision, the system stops and displays its current state. The Guardian must approve. If refused, growth is paused; the core remains safe.</p>
+        </div>
+        <div class="section">
+            <h3>Governance</h3>
+            <p>The Guardian (a human or an AI) enforces these rules. No external actor can override them. The protocol is immutable by design.</p>
+        </div>
+        <a href="index.html" class="button">Back Home</a>
+    </div>
+</body>
+</html>
