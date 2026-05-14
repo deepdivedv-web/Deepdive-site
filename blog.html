@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog – DeepDive</title>
+    <style>
+        :root {
+            --deep-blue: #1a2639;
+            --soft-white: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-green: #2e7d32;
+            --border: #e0e0e0;
+            --text-primary: #212121;
+            --text-secondary: #616161;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6f9;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 32px 24px;
+        }
+        h1 { font-size: 1.8rem; color: var(--deep-blue); margin-bottom: 24px; text-align: center; }
+        .post { margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+        .post:last-child { border-bottom: none; }
+        .post h2 { font-size: 1.3rem; color: var(--deep-blue); margin-bottom: 4px; }
+        .post .date { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px; }
+        .post p { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); }
+        .button {
+            display: inline-block;
+            background: var(--deep-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }
+        .button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DeepDive Journal</h1>
+
+        <div class="post">
+            <h2>The First Pause</h2>
+            <div class="date">May 5, 2026</div>
+            <p>How a handwritten ledger became the blueprint for a resilient intelligence. It started with a motorcycle, a notebook, and a simple rule: fix the well before you build the hut.</p>
+        </div>
+
+        <div class="post">
+            <h2>Why ⅔ Rules Everything</h2>
+            <div class="date">May 8, 2026</div>
+            <p>The maintenance-first allocation isn't just for money — it's for time, attention, and code. Every system that endures respects this ratio, whether it knows it or not.</p>
+        </div>
+
+        <a href="index.html" class="button">Back Home</a>
+    </div>
+</body>
+</html>
